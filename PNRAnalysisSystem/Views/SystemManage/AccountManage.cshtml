@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    a {
+        color: black;
+        font-weight: 700
+    }
+    a:hover {
+        color: darkblue
+    }
+    label {
+        color: black;
+        font-weight: 700
+    }
+</style>
+
+<div class="d-sm-flex align-items-center justify-content-between">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: transparent;">
+            <li><i class="fas fa-home" style="padding-right: 8px;"></i></li>
+            <li class="breadcrumb-item"><a href="#" onclick="LoadRoute('Home/Default')">首頁</a></li>
+            <li class="breadcrumb-item"><a href="#">系統管理</a></li>
+            <li class="breadcrumb-item active" aria-current="page" onclick="LoadTable('SystemManage/AccountManage')">帳號管理</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3" style="background-color: #E7F6FF;">
+        <h6 class="m-0 font-weight-bold text-center">帳號管理</h6>
+    </div>
+    <div class="card-body">
+    <div class="row g-2 mb-3">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+                <input type="text" class="global_filter" id="global_filter" />
+                <input type="button" id="btn_filter" onclick="filterGlobal()" value="搜尋" />
+                <input type="button" id="btn_filter" onclick="filterGlobalClear()" value="清空" />
+            </div>
+    </div>
+    <table id="AccountListDt" class="display" style="width:100%">
+        <thead>
+            <tr style="background-color: #23A6F0;">
+                <th>帳號</th>
+                <th>姓名</th>
+                <th>職稱</th>
+                <th>單位名稱</th>
+                <th>權限</th>
+                <th>狀態</th>
+                <th>動作</th>
+            </tr>
+        </thead>
+        @*  <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+        <td>@item.FuncId</td>
+        <td>@item.FuncCId</td>
+        <td>@item.FuncRName</td>
+        <td>@item.FuncCName</td>
+        <td>@item.FuncId</td>
+        <td>@item.FuncCId</td>
+        <td>@item.FuncRName</td>
+        <td>@item.FuncCName</td>
+        </tr>
+        }
+        </tbody>*@
+    </table>
+    </div>
+</div>
+<script>
+    function filterGlobal() {
+        $('#AccountListDt')
+            .DataTable()
+            .search($('#global_filter').val(), $('#global_regex').prop('checked'), $('#global_smart').prop('checked'))
+            .draw();
+    }
+    function filterGlobalClear() {
+        $('#AccountListDt')
+            .DataTable()
+            .search($('#global_filter').val(''), $('#global_regex').prop('checked'), $('#global_smart').prop('checked'))
+            .draw();
+    }
+    $(document).ready(function () {
+        $('#AccountListDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": false,
+            fixedHeader: {
+                header: true,
+                footer: true
+            }
+        });
+    });
+</script>

@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+@*@model IEnumerable<VarBackOffice.Models.UserAuthFuncList>*@
+
+
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background-image:linear-gradient(180deg,white 10%,white 100%)">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="javascript:void(0)" onclick="LoadRoute('Home/Default')">
+        <img style="width: 60px;right: 8rem;" src="~/image/ROC_National_Immigration_Agency_Seal.svg.png" alt="...">
+        <span style="color:#3a3b45;font-size: 0.05rem;margin-left: 0.25rem" id="brandtxt">
+            內政部入出國及移民署 <br />
+            旅客訂位行程分析系統
+        </span>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item" style="color:#3a3b45;font-weight: 700;">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" style="color:#3a3b45">
+            <i class="fas fa-walking" style="color:#3a3b45"></i>
+            <span>PNR旅客查詢</span>
+        </a>
+        <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="color:#3a3b45">
+            <div class="bg-white py-2 collapse-inner rounded" style="color:#3a3b45;font-weight: 700;">
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/SFlightPassenger')">特定航班旅客名單查詢</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item" style="color:#3a3b45;font-weight: 700;">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2" style="color:#3a3b45">
+            <i class="fas fa-chart-line" style="color:#3a3b45"></i>
+            <span>PNR數據分析</span>
+        </a>
+        <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="color:#3a3b45">
+            <div class="bg-white py-2 collapse-inner rounded" style="color:#3a3b45;font-weight: 700;">
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">長出短入</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">同班機</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">行李風險</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">頻密風險</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">時間風險</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">人蛇風險出境</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">人蛇風險入境</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/Multinational')">多國籍中國人</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">有去無回</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item" style="color:#3a3b45;font-weight: 700;">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3" style="color:#3a3b45">
+            <i class="fas fa-exclamation-triangle" style="color:#3a3b45"></i>
+            <span>風險警告</span>
+        </a>
+        <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="color:#3a3b45">
+            <div class="bg-white py-2 collapse-inner rounded" style="color:#3a3b45;font-weight: 700;">
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">同班機預警</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item" style="color:#3a3b45;font-weight: 700;">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4" style="color:#3a3b45">
+            <i class="fas fa-user-friends" style="color:#3a3b45"></i>
+            <span>帳號權限管理</span>
+        </a>
+        <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="color:#3a3b45">
+            <div class="bg-white py-2 collapse-inner rounded" style="color:#3a3b45;font-weight: 700;">
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('SystemManage/AccountManage')">帳號管理</a>
+            </div>
+        </div>
+    </li>
+
+@*    <li class="nav-item active" style="color:#3a3b45">
+        <a class="nav-link" href="javascript:void(0)" onclick="LoadRoute('Report/DemoTest')" style="color:#3a3b45">
+            <i class="fas fa-fw fa-table" style="color:#3a3b45"></i>
+            <span>DemoTest</span>
+        </a>
+    </li>*@
+
+@*    <li class="nav-item active" style="color:#3a3b45">
+        <a class="nav-link" href="javascript:void(0)" onclick="LoadRoute('Report/DemoReport')" style="color:#3a3b45">
+            <i class="fas fa-fw fa-table" style="color:#3a3b45"></i>
+            <span>DemoTest</span>
+        </a>
+    </li>*@
+
+</ul>

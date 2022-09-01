@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+<style>a{color:black;font-weight:700} a:hover{color:darkblue} label{color:black;font-weight:700}</style>
+
+<div class="d-sm-flex align-items-center justify-content-between">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: transparent;">
+            <li><i class="fas fa-home" style="padding-right: 8px;"></i></li>
+            <li class="breadcrumb-item"><a href="#" onclick="LoadRoute('Home/Default')">首頁</a></li>
+            <li class="breadcrumb-item"><a href="#">旅客資訊</a></li>
+            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/SFlightPassenger')">特定航班旅客名單查詢</li>
+        </ol>
+    </nav> 
+</div>
+
+<div class="card shadow mb-4">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" style="background-color: #E7F6FF;"
+       role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-center">特定航班旅客名單查詢</h6>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <div class="row g-2 mb-3">
+                <div class="col-md-6">
+                    <label for="flightdate" class="form-label">航班日期<span style="color:red">(必填)</span></label>
+                    <div class="input-group" id="flightdate">
+                        <input type="text" class="form-control" placeholder="請輸入" id="flightdatePicker">
+                        <div class="input-group-append">
+                            <span class="input-group-text fs-xl">
+                                <i class="fal fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="flightno" class="form-label">航班編號</label>
+                    <input type="text" class="form-control"  placeholder="請輸入" name="flightno">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" style="padding-right: 0.5rem;">清空搜尋條件</a>
+                    <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnUseSubmit" onclick="LoadTable('SFlightPassenger_List','PNRAnalysis/ListSFlightPassenger')" style="background-color:#23A6F0">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="SFlightPassenger_List"></div>
+
+<script>
+    $(document).ready(function () {
+        var controls = {
+            leftArrow: '<i class="fal fa-angle-left" style="font-size: 1.25rem"></i>',
+            rightArrow: '<i class="fal fa-angle-right" style="font-size: 1.25rem"></i>'
+        }
+        $('#flightdatePicker').datepicker({
+            orientation: "bottom right",
+            todayHighlight: true,
+            templates: controls,
+            format: "yyyy/mm/dd"
+        });
+    });
+</script>

@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+}
+@*@model List<SFlightPassengerModel>*@
+
+<style>
+    table thead th {
+        color: white;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <input type="text" class="global_filter" id="global_filter" />
+        <input type="button" id="btn_filter" onclick="filterGlobal()" value="搜尋" />
+        <input type="button" class="mb-2" id="btn_filter" onclick="filterGlobalClear()" value="清空" />       
+        <table id="AuthFuncListDt" class="display" style="width:100%">
+                <thead>
+                <tr style="background-color: #23A6F0;">
+                        <th>航班日期</th>
+                        <th>航班編號</th>
+                        <th>證件編號</th>
+                        <th>姓名</th>
+                        <th>性別</th>
+                        <th>出生年月日</th>
+                        <th>國籍</th>
+                        <th>座位表號碼</th>
+                    </tr>
+                </thead>
+              @*  <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FuncId</td>
+                            <td>@item.FuncCId</td>
+                            <td>@item.FuncRName</td>
+                            <td>@item.FuncCName</td>
+                            <td>@item.FuncId</td>
+                            <td>@item.FuncCId</td>
+                            <td>@item.FuncRName</td>
+                            <td>@item.FuncCName</td>
+                        </tr>
+                    }
+                </tbody>*@
+            </table>
+    </div>
+</div>
+
+
+<script>
+    function filterGlobal() {
+        $('#AuthFuncListDt')
+            .DataTable()
+            .search($('#global_filter').val(), $('#global_regex').prop('checked'), $('#global_smart').prop('checked'))
+            .draw();
+    }
+    function filterGlobalClear() {
+        $('#AuthFuncListDt')
+            .DataTable()
+            .search($('#global_filter').val(''), $('#global_regex').prop('checked'), $('#global_smart').prop('checked'))
+            .draw();
+    }
+    $(document).ready(function () {
+        $('#AuthFuncListDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": false,
+            fixedHeader: {
+                header: true,
+                footer: true
+            }
+        });
+    });
+</script>

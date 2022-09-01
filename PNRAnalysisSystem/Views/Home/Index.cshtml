@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+    <partial name="_Head"></partial>
+<body id="page-top">
+    <div id="wrapper">
+        @await Html.PartialAsync("MenuContent")
+        <div id="content-wrapper" class="d-flex flex-column">
+            <partial name="_PopUp"></partial>
+            <div id="content">
+                <partial name="_NavgationBar"></partial>
+                <div class="container-fluid" id = "contentpage"></div>
+            </div>
+            <partial name="_Footer"></partial>
+        </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <partial name="_Layout_Script"></partial>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+@*@model List<SFlightPassengerModel>*@
+
+<style>
+    table thead th {
+        color: white;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <table id="ListMultinationalDt" class="display" style="width:100%">
+            <thead>
+                <tr style="background-color: #23A6F0;">
+                    <th>證件號碼</th>
+                    <th>旅客英文姓名</th>
+                    <th>出生年月日</th>
+                    <th>國籍</th>
+                    <th>性別</th>
+                </tr>
+            </thead>
+            @*  <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+            <td>@item.FuncId</td>
+            <td>@item.FuncCId</td>
+            <td>@item.FuncRName</td>
+            <td>@item.FuncCName</td>
+            <td>@item.FuncId</td>
+            <td>@item.FuncCId</td>
+            <td>@item.FuncRName</td>
+            <td>@item.FuncCName</td>
+            </tr>
+            }
+            </tbody>*@
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#ListMultinationalDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": false,
+            fixedHeader: {
+                header: true,
+                footer: true
+            }
+        });
+    });
+</script>

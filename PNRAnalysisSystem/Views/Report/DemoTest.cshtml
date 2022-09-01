@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+<link href="css/common-com.css" rel="stylesheet">
+<script src="js/jquery.table2excel.js"></script>
+
+
+<h2>Model Example</h2>
+
+<button class="btn btn-success btn-icon-split" id="myBtn2" onclick="testajax()"> <span class="text">APITest</span></button>
+
+<button class="btn btn-success btn-icon-split" id="myBtn3" onclick="createCsvFile('test',getRandomData())"><span class="text">CSVExport</span></button>
+
+<button class="btn btn-success btn-icon-split" id="myBtn4" onclick="createTxtFile('test',getRandomData())"><span class="text">TxtExport</span></button>
+
+<button class="btn btn-success btn-icon-split" id="myBtn5" onclick="createXmlFile('test','<sometag><someothertag></someothertag></sometag>')"><span class=" text">XmlExport</span></button>
+
+<button class="btn btn-success btn-icon-split" id="myBtn6" onclick="createXlsFile('test','tblCustomers')"><span class="text">ExcelExport</span></button>
+
+<table id="tblCustomers" cellspacing="0" cellpadding="0">
+    <tr>
+        <th>Customer Id</th>
+        <th>Name</th>
+        <th>Country</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>John Hammond</td>
+        <td>United States</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mudassar Khan</td>
+        <td>India</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Suzanne Mathews</td>
+        <td>France</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Robert Schidner</td>
+        <td>Russia</td>
+    </tr>
+</table>
+
+
+<script>
+    function testajax(){
+        $.ajax({
+            type: "POST",
+            data: { str:"" },
+            url: "/Report/GetTest",
+            success: function (res) {
+                alert(res.msg);
+            },
+            error: function () {
+                alert('Data Server Busy');
+            }
+        });
+    }
+</script>
+
