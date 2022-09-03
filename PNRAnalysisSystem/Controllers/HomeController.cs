@@ -10,18 +10,13 @@ namespace PNRAnalysisSystem.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly UserDao _UserDao;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-
-            _UserDao = new UserDao();
         }
 
         public IActionResult Index()
         {
-            var list = new UserDao().GetFunctionList(1);
-
             return View();
         }
 

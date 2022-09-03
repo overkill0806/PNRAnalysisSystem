@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@*@model List<SFlightPassengerModel>*@
+@model List<PNRModel.SFlightPassenger>
 
 <style>
     table thead th {
@@ -27,21 +27,21 @@
                         <th>座位表號碼</th>
                     </tr>
                 </thead>
-              @*  <tbody>
+                <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.FuncId</td>
-                            <td>@item.FuncCId</td>
-                            <td>@item.FuncRName</td>
-                            <td>@item.FuncCName</td>
-                            <td>@item.FuncId</td>
-                            <td>@item.FuncCId</td>
-                            <td>@item.FuncRName</td>
-                            <td>@item.FuncCName</td>
+                            <td>@item.scheduleFlightTime</td>
+                            <td>@item.flightNo</td>
+                            <td>@item.passengerSeqNo</td>
+                            <td>@item.name</td>
+                            <td>@item.gender</td>
+                            <td>@item.dateOfBirth</td>
+                            <td>@item.nationality</td>
+                            <td>@item.seatNo</td>
                         </tr>
                     }
-                </tbody>*@
+                </tbody>
             </table>
     </div>
 </div>

@@ -38,7 +38,7 @@ namespace PNRAnalysisSystem.Service
             return null;
         }
 
-        public dynamic HttpGet(KeyValuePair<string, string> param, Dictionary<string, string> headerContent)
+        public dynamic HttpGet(Dictionary<string, string> param, Dictionary<string, string> headerContent)
         {
             try
             {
@@ -52,7 +52,19 @@ namespace PNRAnalysisSystem.Service
                         {
                             client.DefaultRequestHeaders.Add(item.Key, item.Value);
                         }
-                    }                  
+                    }      
+                    
+                    if(param !=null)
+                    {
+                        Route += "?";
+
+                        foreach (var item in param)
+                        {
+                           Route += item.Key + "=" + item.Value +"&";
+                        }
+
+                        Route = Route.TrimEnd('&');
+                    }
 
                     HttpResponseMessage res = client.GetAsync(Route).Result;
 

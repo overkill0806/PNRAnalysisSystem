@@ -35,19 +35,7 @@ namespace PNRAnalysisSystem.Controllers
         [HttpPost]
         public JsonResult GetTest(string str)
         {
-            string Domain = "http://172.16.1.101:8080";
-            string Route = "/sameFlight/tasks";
-
-            var dic = new Dictionary<string, string>()
-            {
-                {"agent-id", "HYTEST01" }
-            };
-
-            _ServiceHttp.Domain = Domain;
-            _ServiceHttp.Route = Route;
-            JArray jarray = _ServiceHttp.HttpGet(new KeyValuePair<string, string>(), dic);
-
-            var res = jarray.ToObject<List<SameFlightTask>>();
+            
 
             return Json(new { msg = "Success" });
         }

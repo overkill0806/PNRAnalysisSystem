@@ -1,29 +1,42 @@
 ﻿@{
     Layout = null;
 }
-<style>a{color:black;font-weight:700} a:hover{color:darkblue} label{color:black;font-weight:700}</style>
+<style>
+    a {
+        color: black;
+        font-weight: 700
+    }
+
+        a:hover {
+            color: darkblue
+        }
+
+    label {
+        color: black;
+        font-weight: 700
+    }</style>
 
 <div class="d-sm-flex align-items-center justify-content-between">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: transparent;">
             <li><i class="fas fa-home" style="padding-right: 8px;"></i></li>
             <li class="breadcrumb-item"><a href="#" onclick="LoadRoute('Home/Default')">首頁</a></li>
-            <li class="breadcrumb-item"><a href="#">旅客資訊</a></li>
-            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/SFlightPassenger')">座位查詢</li>
+            <li class="breadcrumb-item"><a href="#">風險分析</a></li>
+            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/OutNotBack')">有去無回</li>
         </ol>
-    </nav> 
+    </nav>
 </div>
 
 <div class="card shadow mb-4">
     <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" style="background-color: #E7F6FF;"
        role="button" aria-expanded="true" aria-controls="collapseCardExample">
-        <h6 class="m-0 font-weight-bold text-center">特定航班旅客名單查詢</h6>
+        <h6 class="m-0 font-weight-bold text-center">有去無回旅客資訊查詢</h6>
     </a>
     <div class="collapse show" id="collapseCardExample">
         <div class="card-body">
             <div class="row g-2 mb-3">
                 <div class="col-md-6">
-                    <label for="flightdate" class="form-label">航班日期<span style="color:red">(必填)</span></label>
+                    <label for="flightdate" class="form-label">飛行日期期間<span style="color:red">(必填)</span></label>
                     <div class="input-group" id="flightdate">
                         <input type="text" class="form-control" placeholder="請輸入" id="flightdatePicker">
                         <div class="input-group-append">
@@ -34,8 +47,13 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label for="flightno" class="form-label">航班編號</label>
-                    <input type="text" class="form-control"  placeholder="請輸入" name="flightno">
+                    <label for="airport" class="form-label">抵達機場<span style="color:red">(必填)</span></label>
+                    <div class="input-group-append">
+                        <select class="form-control">
+                            <option>請選擇</option>
+                            <option>請選擇2</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -43,14 +61,14 @@
                 </div>
                 <div class="col-md-2">
                     <a href="javascript:void(0)" style="padding-right: 0.5rem;">清空搜尋條件</a>
-                    <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnUseSubmit" onclick="process()" style="background-color:#23A6F0">Search</button>
+                    <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnUseSubmit" onclick="LoadTable('OutNotBack_List','PNRAnalysis/ListOutNotBack')" style="background-color:#23A6F0">Search</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="SFlightPassenger_List"></div>
+<div id="OutNotBack_List"></div>
 
 <script>
     $(document).ready(function () {
@@ -65,9 +83,4 @@
             format: "yyyy/mm/dd"
         });
     });
-    function process()
-    {
-        var flightno = $('[name=flightno]').val();
-        LoadTable('SFlightPassenger_List', 'PNRAnalysis/ListSFlightPassenger?flightno=' + flightno);
-    }
 </script>
