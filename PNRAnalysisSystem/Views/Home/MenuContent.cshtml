@@ -14,28 +14,27 @@
     <li class="nav-item" style="color:#3a3b45;font-weight: 700;">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1" style="color:#3a3b45">
             <i class="fas fa-walking" style="color:#3a3b45"></i>
-            <span>PNR旅客查詢</span>
+            <span>旅客查詢</span>
         </a>
         <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="color:#3a3b45">
             <div class="bg-white py-2 collapse-inner rounded" style="color:#3a3b45;font-weight: 700;">
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/SFlightPassenger')">特定航班旅客名單查詢</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/SFlightPassenger')">座位查詢</a>
             </div>
         </div>
     </li>
     <li class="nav-item" style="color:#3a3b45;font-weight: 700;">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2" style="color:#3a3b45">
             <i class="fas fa-chart-line" style="color:#3a3b45"></i>
-            <span>PNR數據分析</span>
+            <span>風險分析</span>
         </a>
         <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="color:#3a3b45">
             <div class="bg-white py-2 collapse-inner rounded" style="color:#3a3b45;font-weight: 700;">
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">長出短入</a>
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">同班機</a>
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">行李風險</a>
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">頻密風險</a>
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">時間風險</a>
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">人蛇風險出境</a>
-                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('Home/Error')">人蛇風險入境</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/OutLongerIn')">長出短入</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/SameFlightPassenger')">同班機</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/Luggage')">行李風險</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/HighFreqQuery')">頻密風險</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/TimeRisk')">時間風險</a>
+                <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/HumanTrafficker')">人蛇風險查詢</a>
                 <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/Multinational')">多國籍中國人</a>
                 <a class="collapse-item" href="javascript:void(0)" onclick="LoadRoute('PNRAnalysis/OutNotBack')">有去無回</a>
             </div>

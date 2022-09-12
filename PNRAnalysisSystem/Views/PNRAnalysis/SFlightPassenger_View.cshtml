@@ -1,0 +1,156 @@
+﻿@{
+    Layout = null;
+}
+@model List<PNRModel.SFlightPassenger_View>
+<style>
+    a {
+        color: black;
+        font-weight: 700
+    }
+
+    a:hover {
+        color: darkblue
+    }
+
+    .Sflightlabel {
+        color: #5088FF;
+        font-weight: 700;
+        font-size: 20px;
+        padding-left: 3rem;
+        padding-top: 0.5rem;
+    }
+
+    .Sflightlabel2 {
+        color: black;
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3" style="background-color: #E7F6FF;">
+        <h6 class="m-0 font-weight-bold text-center">PNR特定航班旅客座位表</h6>
+    </div>
+    <div class="card-body">
+        <div class="row g-2 mb-5">
+            <div class="col-md-3"><label style="font-size:20px">航班：<span>@ViewData["flightno"]</span></label></div>
+            <div class="col-md-3"><label style="font-size:20px">座位號碼：<span>@ViewData["seat"]</span></label></div>
+            <div class="col-md-4"><label style="font-size:20px">姓名：<span>@ViewData["name"]</span></label></div>
+            <div class="col-md-2" style="padding-left: 5rem;">
+                <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnNewBatch" onclick="goback()" style="background-color:#23A6F0">回上一頁</button>
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                   <label class="Sflightlabel">@(Model.Count>0?Model[0].seatNo:"")</label>
+                   <br />
+                   <br />
+                    <label class="Sflightlabel2">@(Model.Count > 0 ? Model[0].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>  
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>1?Model[1].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 1 ? Model[1].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>2?Model[2].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 2 ? Model[2].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+        </div>
+        <div class="row g-2" style="margin-top: -6rem;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>3?Model[3].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 3 ? Model[3].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+            <div class="col-md-2" onclick="PopActive('Report/DemoReport_Information')">
+                <div class="SeatRectangle1" style="background-color:#FFCC00"></div>
+                <div class="SeatRectangle2" style="background-color:#FFCC00">
+                    <label class="Sflightlabel">@(Model.Count>4?Model[4].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 4 ? Model[4].name : "")</label>
+                </div>
+                <div class="SeatRectangle3" style="background-color:#FFCC00"></div>
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>5?Model[5].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 5 ? Model[5].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+        </div>
+        <div class="row g-2" style="margin-top: -6rem;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>6?Model[6].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 6 ? Model[6].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>7?Model[7].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 7 ? Model[7].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+            <div class="col-md-2">
+                <div class="SeatRectangle1"></div>
+                <div class="SeatRectangle2">
+                    <label class="Sflightlabel">@(Model.Count>08?Model[8].seatNo:"")</label>
+                    <br />
+                    <br />
+                    <label class="Sflightlabel2">@(Model.Count > 8 ? Model[8].name : "")</label>
+                </div>
+                <div class="SeatRectangle3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function goback()
+    {
+        $('#SFlightPassenger').show();
+        $('#SFlightPassenger_List').show();
+        $('#SFlightPassenger_ListDt').show();
+        $('#SFlightPassengerView').hide();
+    }
+</script>

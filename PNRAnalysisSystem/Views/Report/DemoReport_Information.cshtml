@@ -1,0 +1,376 @@
+﻿@{
+    Layout = null;
+}
+<div class="card shadow mb-4 PNR_card">
+    <div class="card-header py-2">
+        <h6 class="m-0 font-weight-bold text-center">PNR Information</h6>
+    </div>
+    <div class="card-body">
+        <div class="clearfix">
+            <button class="btn btn-info float-right">匯出檔</button>
+        </div>
+        <div class="row row-cols-4 mt-4">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_status">
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <ul class="list-unstyled">
+                                    <li>PNR Record(系統商)</li>
+                                    <li class="PNR_color_text">6P6QY7</li>
+                                    <li class="PNR_color_text">FVXSR(Abacus)</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-unstyled">
+                                    <li>登記狀態</li>
+                                    <li class="mb-1 PNR_color_text">已登機</li>
+                                    <li>報到時間</li>
+                                    <li class="mb-1 PNR_color_text">2022/06/01 14:00</li>
+                                    <li>登記狀態</li>
+                                    <li class="PNR_color_text">HAN058</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_primary_table">
+                        <p>常客資訊</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">常客編號</th>
+                                        <th scope="col" style="width: 11%">常客等級</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_primary_table">
+                        <p></p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">座位資訊</th>
+                                        <th scope="col" style="width: 11%">機艙代碼</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>027G</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_primary_table">
+                        <p>Originator</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">航空公司</th>
+                                        <th scope="col" style="width: 11%">系統代碼</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>中華航空</td>
+                                        <td>LON</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 銷售地點資訊 -->
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_secondary_table">
+                        <p>銷售地點資訊(POS)</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">代理銷售</th>
+                                        <th scope="col" style="width: 11%">銷售機構所在城市</th>
+                                        <th scope="col" style="width: 11%">銷售機構所在國家</th>
+                                        <th scope="col" style="width: 12%">銷售機構<br>所在地點使用貨幣</th>
+                                        <th scope="col" style="width: 11%">代理銷售分公司</th>
+                                        <th scope="col" style="width: 12%">代理銷售航空公司</th>
+                                        <th scope="col" style="width: 16%">XML 傳送代表位置</th>
+                                        <th scope="col" style="width: 12%">第一出發機場</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 聯絡資訊 -->
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_secondary_table">
+                        <p>聯絡資訊(Contactinfo)</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 12%">鄉間郵遞信箱</th>
+                                        <th scope="col" style="width: 11%">鄉間街道號碼</th>
+                                        <th scope="col" style="width: 10%">鄉間街道方向</th>
+                                        <th scope="col" style="width: 12%">鄉間郵遞號碼</th>
+                                        <th scope="col" style="width: 15%">建築物名稱</th>
+                                        <th scope="col" style="width: 13%">電話號碼</th>
+                                        <th scope="col" style="width: 17%">Email</th>
+                                        <th scope="col" style="width: 13%">電話聯繫方式</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 9%">國家代碼</th>
+                                        <th scope="col" style="width: 15%">國家名稱</th>
+                                        <th scope="col" style="width: 10%">郵遞區號</th>
+                                        <th scope="col" style="width: 12%">州/區代碼</th>
+                                        <th scope="col" style="width: 21%">鄉鎮市區</th>
+                                        <th scope="col" style="width: 36%">地址</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 訂票資訊 -->
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_secondary_table">
+                        <p>訂票資訊(Orderinfo)</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 12%">鄉間郵遞信箱</th>
+                                        <th scope="col" style="width: 11%">鄉間街道號碼</th>
+                                        <th scope="col" style="width: 10%">鄉間街道方向</th>
+                                        <th scope="col" style="width: 12%">鄉間郵遞號碼</th>
+                                        <th scope="col" style="width: 15%">建築物名稱</th>
+                                        <th scope="col" style="width: 13%">電話號碼</th>
+                                        <th scope="col" style="width: 17%">Email</th>
+                                        <th scope="col" style="width: 13%">電話聯繫方式</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 9%">國家代碼</th>
+                                        <th scope="col" style="width: 15%">國家名稱</th>
+                                        <th scope="col" style="width: 10%">郵遞區號</th>
+                                        <th scope="col" style="width: 12%">州/區代碼</th>
+                                        <th scope="col" style="width: 21%">鄉鎮市區</th>
+                                        <th scope="col" style="width: 36%">地址</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 旅客其他文件資訊 -->
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_secondary_table">
+                        <p>旅客其他文件資訊(Passenger Other Supplementary Information)(DOCO)</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 14.5%">出生地</th>
+                                        <th scope="col" style="width: 13%">證件類別</th>
+                                        <th scope="col" style="width: 14.5%">證件號碼</th>
+                                        <th scope="col" style="width: 14.5%">發證國家</th>
+                                        <th scope="col" style="width: 14.5%">發證日期</th>
+                                        <th scope="col" style="width: 14.5%">城市代碼</th>
+                                        <th scope="col" style="width: 14.5%">指示嬰兒正用</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 旅客旅行證件資訊 -->
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_secondary_table">
+                        <p>旅客旅行證件資訊(Passenger Travel Document)(DOCS)</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 13%">證件類別</th>
+                                        <th scope="col" style="width: 8.5%">證件號碼</th>
+                                        <th scope="col" style="width: 8.5%">證件發行國</th>
+                                        <th scope="col" style="width: 4.6%">國籍</th>
+                                        <th scope="col" style="width: 4.6%">性別</th>
+                                        <th scope="col" style="width: 8.4%">到期日</th>
+                                        <th scope="col" style="width: 10.3%">姓</th>
+                                        <th scope="col" style="width: 10.3%">名</th>
+                                        <th scope="col" style="width: 10.4%">中間名</th>
+                                        <th scope="col" style="width: 12%">主要護照持有人</th>
+                                        <th scope="col" style="width: 9%">生日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 非結構化PNR歷史資訊 -->
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card PNR_border_card">
+                    <div class="card-body PNR_table PNR_secondary_table">
+                        <p>非結構化PNR歷史資訊(Unstructure PNR History)</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">非結構化歷史資訊</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <button class="btn btn-info" onclick="PopDisActive()">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>

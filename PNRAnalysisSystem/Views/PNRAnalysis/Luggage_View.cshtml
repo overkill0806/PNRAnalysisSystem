@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+@model List<PNRModel.LuggageViewModel>
+
+<style>
+    table thead th {
+        color: white;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <table id="Luggage_ViewDt" class="display" style="width:100%">
+            <thead>
+                <tr style="background-color: #23A6F0;">
+                    <th>航班編號</th>
+                    <th>實際起飛時間</th>
+                    <th>航班起飛機場</th>
+                    <th>航班降落機場</th>
+                    <th style="width:60px">旅客姓名</th>
+                    <th style="width:100px">生日</th>
+                    <th>國籍</th>
+                    <th>行李件數</th>
+                    <th>行李重量</th>
+                    <th>動作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.flightNo</td>
+                        <td>@item.actualFlightTime</td>
+                        <td>@item.departureAirportLocCode</td>
+                        <td>@item.arrivalAirportLocCode</td>
+                        <td>@item.name</td>
+                        <td>@item.dateOfBirth</td>
+                        <td>@item.nationality</td>
+                        <td>@item.luggageQuantity</td>
+                        <td>@item.luggageWeight</td>
+                        <td>
+                            <button class="btn btn-success btn-icon-split" style="background-color:#75A05E" onclick="PopActive('Report/DemoReport_Information')">
+                                <span class="text">詳細</span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#Luggage_ViewDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": false,
+            fixedHeader: {
+                header: true,
+                footer: true
+            }
+        });
+    });
+</script>

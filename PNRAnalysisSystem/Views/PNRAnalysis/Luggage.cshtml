@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    a {
+        color: black;
+        font-weight: 700
+    }
+
+        a:hover {
+            color: darkblue
+        }
+
+    label {
+        color: black;
+        font-weight: 700
+    }</style>
+
+<div class="d-sm-flex align-items-center justify-content-between">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: transparent;">
+            <li><i class="fas fa-home" style="padding-right: 8px;"></i></li>
+            <li class="breadcrumb-item"><a href="#" onclick="LoadRoute('Home/Default')">首頁</a></li>
+            <li class="breadcrumb-item"><a href="#">風險分析</a></li>
+            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/Luggage')">旅客出、入境行李查詢</li>
+        </ol>
+    </nav>
+    <div class="col-md-2" style="margin-right:-7.5rem">
+        <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnNewBatch" onclick="process_add()" style="background-color:#23A6F0">新增</button>
+        <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnGoBack" onclick="goback()" style="margin-left: -1rem;background-color:#23A6F0;display:none">回前頁</button>
+    </div>
+</div>
+
+<div class="card shadow mb-4" id="luggagemain">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" style="background-color: #E7F6FF;"
+       role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-center">旅客出、入境行李查詢</h6>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body" style="background-color:#F5F6FA">
+            <div class="row g-2 mb-3" style="margin-top:-1rem;margin-right: -1rem; margin-left: -1rem">
+                <div class="col-md-3" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="airport" class="form-label">行李重量</label>
+                    <div class="input-group-append">
+                        <select class="form-control" id="luggagewt">
+                            <option value="">請選擇</option>
+                            <option>1-10kg</option>
+                            <option>11-20kg</option>
+                            <option>21-30kg</option>
+                            <option>30kg以上</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="flightdate" class="form-label">航班日期期間(至少6個月)</label>
+                    <div class="input-group" id="flightdate">
+                        <input type="text" class="form-control" placeholder="請輸入" id="flightdatePicker" name="datePicker">
+                        <div class="input-group-append">
+                            <span class="input-group-text fs-xl">
+                                <i class="fal fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" style="padding-right: 0.5rem;">清空搜尋條件</a>
+                    <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnUseSubmit" onclick="process()" style="background-color:#23A6F0">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Luggage_List"></div>
+
+<div id="Luggage_View" style="display:none"></div>
+
+<script>
+    $(document).ready(function () {
+        var controls = {
+            leftArrow: '<i class="fal fa-angle-left" style="font-size: 1.25rem"></i>',
+            rightArrow: '<i class="fal fa-angle-right" style="font-size: 1.25rem"></i>'
+        }
+        $('input[name=datePicker]').datepicker({
+            orientation: "bottom right",
+            todayHighlight: true,
+            templates: controls,
+            format: "yyyy/mm/dd"
+        });
+    });
+    function process() {
+        var inout = $('#inout :selected').val();
+        var luggagewt = $('#luggagewt :selected').val();
+        var flightdate = $('#flightdatePicker').val();
+        LoadTable('Luggage_List', 'PNRAnalysis/ListLuggage?inout=' + inout + '&luggagewt=' + luggagewt + '&flightdate=' + flightdate);
+    }
+    function goback()
+    {
+        $('#Luggage_List').show();
+        $('#ListLuggageDt').show();
+        $('#luggagemain').show();
+        $('#btnNewBatch').show();
+        $('#Luggage_View').hide();
+        $('#Luggage_ViewDt').hide();
+        $('#btnGoBack').hide();      
+    }
+    function process_add() {
+        $.ajax({
+            url: "/PNRAnalysis/Luggage_Add",
+            data: {},
+            type: "post",
+            success: function (res) {
+                alert('新增任務成功');
+            }
+        });
+    }
+</script>

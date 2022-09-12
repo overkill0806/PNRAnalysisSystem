@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+@using Newtonsoft.Json;
 @model List<PNRModel.SFlightPassenger>
 
 <style>
@@ -13,8 +14,8 @@
     <div class="card-body">
         <input type="text" class="global_filter" id="global_filter" />
         <input type="button" id="btn_filter" onclick="filterGlobal()" value="搜尋" />
-        <input type="button" class="mb-2" id="btn_filter" onclick="filterGlobalClear()" value="清空" />       
-        <table id="AuthFuncListDt" class="display" style="width:100%">
+        <input type="button" class="mb-2" id="btn_filter" onclick="filterGlobalClear()" value="清空" />
+        <table id="SFlightPassenger_ListDt" class="display" style="width:100%">
                 <thead>
                 <tr style="background-color: #23A6F0;">
                         <th>航班日期</th>
@@ -34,7 +35,7 @@
                             <td>@item.scheduleFlightTime</td>
                             <td>@item.flightNo</td>
                             <td>@item.passengerSeqNo</td>
-                            <td>@item.name</td>
+                            <td><a href="javascript:void(0)" onclick="LoadView('@item.flightNo','@item.name','@item.seatNo','@item.scheduleFlightTime')">@item.name</a></td>
                             <td>@item.gender</td>
                             <td>@item.dateOfBirth</td>
                             <td>@item.nationality</td>
@@ -48,20 +49,21 @@
 
 
 <script>
+
     function filterGlobal() {
-        $('#AuthFuncListDt')
+        $('#SFlightPassenger_ListDt')
             .DataTable()
             .search($('#global_filter').val(), $('#global_regex').prop('checked'), $('#global_smart').prop('checked'))
             .draw();
     }
     function filterGlobalClear() {
-        $('#AuthFuncListDt')
+        $('#SFlightPassenger_ListDt')
             .DataTable()
             .search($('#global_filter').val(''), $('#global_regex').prop('checked'), $('#global_smart').prop('checked'))
             .draw();
     }
     $(document).ready(function () {
-        $('#AuthFuncListDt').DataTable({
+        $('#SFlightPassenger_ListDt').DataTable({
             "searching": true,
             "paging": true,
             "info": false,
@@ -72,4 +74,22 @@
             }
         });
     });
+
+    var entityObject = @Html.Raw(JsonConvert.SerializeObject(Model));
+
+    function LoadView(flightNo, name, seatNo, flightdate) {
+        $('#SFlightPassenger').hide();
+        $('#SFlightPassenger_List').hide();
+        $('#SFlightPassenger_ListDt').hide();
+
+        $.ajax({
+            url: "/PNRAnalysis/SFlightPassenger_View",
+            data: { flightno: flightNo, name: name, seatNo: seatNo, flightdate: flightdate },
+            type: "post",
+            success: function (html) {
+                $('#SFlightPassengerView').html(html);
+            }
+        });
+        $('#SFlightPassengerView').show();
+    }
 </script>

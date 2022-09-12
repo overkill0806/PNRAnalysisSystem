@@ -14,7 +14,7 @@
     </nav> 
 </div>
 
-<div class="card shadow mb-4">
+<div class="card shadow mb-4" id="SFlightPassenger">
     <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" style="background-color: #E7F6FF;"
        role="button" aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-center">特定航班旅客名單查詢</h6>
@@ -52,6 +52,8 @@
 
 <div id="SFlightPassenger_List"></div>
 
+<div id="SFlightPassengerView" style="display:none"></div>
+
 <script>
     $(document).ready(function () {
         var controls = {
@@ -68,6 +70,7 @@
     function process()
     {
         var flightno = $('[name=flightno]').val();
-        LoadTable('SFlightPassenger_List', 'PNRAnalysis/ListSFlightPassenger?flightno=' + flightno);
+        var flightdate = $('#flightdatePicker').val();
+        LoadTable('SFlightPassenger_List', 'PNRAnalysis/ListSFlightPassenger?flightno=' + flightno + '&flightdate=' + flightdate);
     }
 </script>

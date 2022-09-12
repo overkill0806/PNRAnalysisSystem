@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model List<PNRModel.MultinationalModel>
+@*@model List<SFlightPassengerModel>*@
 
 <style>
     table thead th {
@@ -11,7 +11,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-body">
-        <table id="ListMultinationalDt" class="display" style="width:100%">
+        <table id="ListOutLongerInDt" class="display" style="width:100%">
             <thead>
                 <tr style="background-color: #23A6F0;">
                     <th>證件號碼</th>
@@ -21,18 +21,21 @@
                     <th>性別</th>
                 </tr>
             </thead>
-              <tbody>
+            @*  <tbody>
             @foreach (var item in Model)
             {
             <tr>
-                <td>@item.passengerSeqNo</td>
-                <td>@item.name</td>
-                <td>@item.dateOfBirth</td>
-                <td>@item.nationality</td>
-                <td>@item.flightNo</td>
+            <td>@item.FuncId</td>
+            <td>@item.FuncCId</td>
+            <td>@item.FuncRName</td>
+            <td>@item.FuncCName</td>
+            <td>@item.FuncId</td>
+            <td>@item.FuncCId</td>
+            <td>@item.FuncRName</td>
+            <td>@item.FuncCName</td>
             </tr>
             }
-            </tbody>
+            </tbody>*@
         </table>
     </div>
 </div>
@@ -40,7 +43,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#ListMultinationalDt').DataTable({
+        $('#ListOutLongerInDt').DataTable({
             "searching": true,
             "paging": true,
             "info": false,

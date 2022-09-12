@@ -6,14 +6,15 @@
         color: black;
         font-weight: 700
     }
-    a:hover {
-        color: darkblue
-    }
+
+        a:hover {
+            color: darkblue
+        }
+
     label {
         color: black;
         font-weight: 700
-    }
-</style>
+    }</style>
 
 <div class="d-sm-flex align-items-center justify-content-between">
     <nav aria-label="breadcrumb">
@@ -21,37 +22,44 @@
             <li><i class="fas fa-home" style="padding-right: 8px;"></i></li>
             <li class="breadcrumb-item"><a href="#" onclick="LoadRoute('Home/Default')">首頁</a></li>
             <li class="breadcrumb-item"><a href="#">風險分析</a></li>
-            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/SFlightPassenger')">多國籍中國旅客查詢</li>
+            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/OutLongerIn')">長出短入</li>
         </ol>
     </nav>
+    <div class="col-md-2" style="margin-right:-7.5rem">
+        <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnNewBatch" onclick="" style="background-color:#23A6F0">新增</button>
+    </div>
 </div>
 
 <div class="card shadow mb-4">
     <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" style="background-color: #E7F6FF;"
        role="button" aria-expanded="true" aria-controls="collapseCardExample">
-        <h6 class="m-0 font-weight-bold text-center">多國籍中國旅客查詢</h6>
+        <h6 class="m-0 font-weight-bold text-center">長出短入查詢</h6>
     </a>
     <div class="collapse show" id="collapseCardExample">
         <div class="card-body" style="background-color:#F5F6FA">
             <div class="row g-2 mb-3" style="margin-top:-1rem;margin-right: -1rem; margin-left: -1rem">
-                <div class="col-md-6" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
-                    <label for="flightno" class="form-label">旅行證件號碼<span style="color:red">(必填)</span></label>
-                    <input type="text" class="form-control" placeholder="請輸入" name="passengerSeqNo">
-                </div>
-                <div class="col-md-3" style="background-color:#FCFAD9;padding-top: 1rem;padding-bottom: 2rem;">
-                    <label for="flightno" class="form-label">英文姓名<span style="color:red">(必填)</span></label>
-                    <input type="text" class="form-control" placeholder="請輸入" name="enName">
-                </div>
-                <div class="col-md-3" style="background-color:#FCFAD9;padding-top: 1rem;padding-bottom: 2rem;">
-                    <label for="flightdate" class="form-label">出生日期<span style="color:red">(必填)</span></label>
+                <div class="col-md-3" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="flightdate" class="form-label">飛行日期時間</label>
                     <div class="input-group" id="flightdate">
-                        <input type="text" class="form-control" placeholder="請輸入" id="birthdatePicker">
+                        <input type="text" class="form-control" placeholder="請輸入" id="flightdatePicker" name="datePicker">
                         <div class="input-group-append">
                             <span class="input-group-text fs-xl">
                                 <i class="fal fa-calendar-alt"></i>
                             </span>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-3" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="airport" class="form-label">機場</label>
+                    <input type="text" class="form-control" placeholder="請輸入" name="airport">
+                </div>
+                <div class="col-md-3" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="flightOutdate" class="form-label">出發飛行時間(X)</label>
+                    <input type="text" class="form-control" placeholder="請輸入" name="flightOutdate">
+                </div>
+                <div class="col-md-3" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="linearTime" class="form-label">旅客到站後的停留時間(Y)</label>
+                    <input type="text" class="form-control" placeholder="請輸入" name="linearTime">
                 </div>
             </div>
             <div class="row">
@@ -66,7 +74,7 @@
     </div>
 </div>
 
-<div id="Multinational_List"></div>
+<div id="OutLongerIn_List"></div>
 
 <script>
     $(document).ready(function () {
@@ -74,18 +82,15 @@
             leftArrow: '<i class="fal fa-angle-left" style="font-size: 1.25rem"></i>',
             rightArrow: '<i class="fal fa-angle-right" style="font-size: 1.25rem"></i>'
         }
-        $('#birthdatePicker').datepicker({
+        $('input[name=datePicker]').datepicker({
             orientation: "bottom right",
             todayHighlight: true,
             templates: controls,
             format: "yyyy/mm/dd"
         });
     });
-
     function process() {
-        var passengerSeqNo = $('[name=passengerSeqNo]').val();
-        var enName = $('[name=enName]').val();
-        var birthdate = $('#birthdatePicker').val();
-        LoadTable('Multinational_List', 'PNRAnalysis/ListMultinational?passengerSeqNo=' + passengerSeqNo + "&enName=" + enName + '&birthdate=' + birthdate);
+        //var flightno = $('[name=flightno]').val();
+        //LoadTable('SFlightPassenger_List', 'PNRAnalysis/ListSFlightPassenger?flightno=' + flightno);
     }
 </script>

@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+@model List<PNRModel.HighFreqQueryViewModel>
+
+<style>
+    table thead th {
+        color: white;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <table id="HighFreqQuery_ViewDt" class="display" style="width:100%">
+            <thead>
+                <tr style="background-color: #23A6F0;">
+                    <th>航班日期期間</th>
+                    <th>入境次數</th>
+                    <th style="width:100px">旅客姓名</th>
+                    <th>生日</th>
+                    <th>國籍</th>
+                    <th>性別</th>
+                    <th>動作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.startedDate 至 @item.endedDate</td>
+                        <td>@item.numberOfEntries</td>
+                        <td>@item.name</td>
+                        <td>@item.dateOfBirth</td>
+                        <td>@item.nationality</td>
+                        <td>@item.gender</td>
+                        <td>
+                            <button class="btn btn-success btn-icon-split" style="background-color:#75A05E" onclick="PopActive('Report/DemoReport_Information')">
+                                <span class="text">詳細</span>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#HighFreqQuery_ViewDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": false,
+            fixedHeader: {
+                header: true,
+                footer: true
+            }
+        });
+    });
+</script>

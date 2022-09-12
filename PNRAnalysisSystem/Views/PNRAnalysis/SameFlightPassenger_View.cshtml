@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+}
+@model List<PNRModel.SameFlightTask_View>
+
+<style>
+    table thead th {
+        color: white;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <table id="SameFlightPassenger_ViewDt" class="display nowrap" style="width:100%">
+            <thead>
+                <tr style="background-color: #23A6F0;">
+                    <th class="all">旅客英文姓名</th>
+                    <th class="all">出生年月日</th>
+                    <th class="all">國籍</th>
+                    <th class="all">同班機時間</th>
+                    <th class="all">航班編號</th>
+                    <th class="all">同班機次數</th>
+                    <th class="none">Child</th>
+                </tr>
+            </thead>
+            <tbody>
+             @*   @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.name</td>
+                        <td>@item.dateOfBirth</td>
+                        <td>@item.nationality</td>
+                        <td>@item.actualFlightTime</td>
+                        <td>@item.flightNo</td>
+                        <td></td>
+                        <td>
+
+                        </td>
+                    </tr>
+                }*@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#SameFlightPassenger_ViewDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": true,
+            fixedHeader: {
+                header: true,
+                footer: true
+            },
+            responsive: {
+                details: {
+                    renderer: function (api, rowIdx, columns) {
+
+                        var data = '<table style="width:100%">' +
+                            '<thead>' +
+                            '<tr>' +
+                            '<th>實際起降時間</th>' +
+                            '<th>航班編號</th>' +
+                            '<th>航班起飛機場</th>' +
+                            '<th>航班降落機場</th>' +
+                            '<th>證件號碼</th>' +
+                            '<th>旅客姓名</th>' +
+                            '<th>出生年明日</th>' +
+                            '<th>國籍</th>' +
+                            '<th>PNR Number</th>' +
+                            '</tr>' +
+                            '</thead>' +
+                            '<tbody>' +
+                            $.map(columns, function (col, i) {
+                                var input = col.data.split('|');
+                                var str = '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">';
+                                str = '';
+                                for (var i = 0; i < input.length; i++) {
+                                    var input2 = input[i].split(',');
+
+                                    str += '<tr>';
+                                    for (var j = 0; j < input2.length; j++) {
+                                        str += '<td>' + input2[j] + '</td>';
+                                    }
+                                    str += '</tr>';
+                                }
+                                return col.hidden ?
+                                    str +
+                                    '' :
+                                    '';
+                            }).join('') +
+                            '</tbody>' +
+                            '</table>';
+
+                        return data ?
+                            $('<table/>').append(data) :
+                            false;
+                    }
+                }
+            },
+            columnDefs: [{
+                className: 'control',
+                orderable: false,
+                targets: 0
+            }],
+            order: [1, 'asc']
+        });
+    });
+</script>

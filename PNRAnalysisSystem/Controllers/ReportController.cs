@@ -26,6 +26,12 @@ namespace PNRAnalysisSystem.Controllers
         {
             return View();
         }
+        
+        public IActionResult DemoReport_Information()
+        {
+            return View();
+        }
+        
         public IActionResult DemoDashboard()
         {
             return View();

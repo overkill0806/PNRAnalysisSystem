@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json;
 using System.Net;
 
 namespace PNRAnalysisSystem.Service
@@ -16,7 +17,15 @@ namespace PNRAnalysisSystem.Service
                 {
                     client.BaseAddress = new Uri(Domain);
 
-                    var content = new FormUrlEncodedContent(parameters);
+                    if (headerContent != null)
+                    {
+                        foreach (var item in headerContent)
+                        {
+                            client.DefaultRequestHeaders.Add(item.Key, item.Value);
+                        }
+                    }
+
+                    var content = parameters == null? null: new FormUrlEncodedContent(parameters);
 
                     HttpResponseMessage res = client.PostAsync(Route, content).Result;
 
@@ -85,6 +94,49 @@ namespace PNRAnalysisSystem.Service
 
 
             return null;
+        }
+        public bool HttpDelete(Dictionary<string, string> param, Dictionary<string, string> headerContent)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(Domain);
+
+                    if (headerContent != null)
+                    {
+                        foreach (var item in headerContent)
+                        {
+                            client.DefaultRequestHeaders.Add(item.Key, item.Value);
+                        }
+                    }
+
+                    if (param != null)
+                    {
+                        Route += "?";
+
+                        foreach (var item in param)
+                        {
+                            Route += item.Key + "=" + item.Value + "&";
+                        }
+
+                        Route = Route.TrimEnd('&');
+                    }
+
+                    var res = client.DeleteAsync(Route).Result;             
+
+                    if (res.StatusCode == HttpStatusCode.OK)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                string errMsg = $"Fail- Exception :{e.Message}";
+            }
+
+            return false;
         }
     }
 }

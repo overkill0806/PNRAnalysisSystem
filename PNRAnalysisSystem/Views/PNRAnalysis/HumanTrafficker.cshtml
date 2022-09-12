@@ -1,0 +1,135 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    a {
+        color: black;
+        font-weight: 700
+    }
+
+        a:hover {
+            color: darkblue
+        }
+
+    label {
+        color: black;
+        font-weight: 700
+    }</style>
+
+<div class="d-sm-flex align-items-center justify-content-between">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: transparent;">
+            <li><i class="fas fa-home" style="padding-right: 8px;"></i></li>
+            <li class="breadcrumb-item"><a href="#" onclick="LoadRoute('Home/Default')">首頁</a></li>
+            <li class="breadcrumb-item"><a href="#">風險分析</a></li>
+            <li class="breadcrumb-item active" aria-current="page" onclick="LoadRoute('PNRAnalysis/HumanTrafficker')">人蛇風險查詢</li>
+        </ol>
+    </nav>
+    <div class="col-md-2" style="margin-right:-5.5rem">
+        <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnNewBatch" onclick="process_add()" style="background-color:#23A6F0">新增</button>
+        <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnGoBack" onclick="goback()" style="margin-left: -1rem;background-color:#23A6F0;display:none">回前頁</button>
+    </div>
+</div>
+
+<div class="card shadow mb-4" id="HumanTraffickermain">
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" style="background-color: #E7F6FF;"
+       role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-center">人蛇風險查詢</h6>
+    </a>
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body" style="background-color:#F5F6FA">
+            <div class="row g-2 mb-3" style="margin-top:-1rem;margin-right: -1rem; margin-left: -1rem">              
+                <div class="col-md-2" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="airport" class="form-label">入出境<span style="color:red">(必填)</span></label>
+                    <div class="input-group-append">
+                        <select class="form-control" id="inout">
+                            <option value="">請選擇</option>
+                            <option>入境</option>
+                            <option>出境</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="flightdate" class="form-label">航班日期<span style="color:red">(必填)</span></label>
+                    <div class="input-group" id="flightdate">
+                        <input type="text" class="form-control" placeholder="請輸入" id="flightdate" name="datePicker">
+                        <div class="input-group-append">
+                            <span class="input-group-text fs-xl">
+                                <i class="fal fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="nation" class="form-label">英文姓名<span style="color:red">(必填)</span></label>
+                    <input type="text" class="form-control" placeholder="請輸入" name="enName">
+                </div>
+                <div class="col-md-2" style="background-color: white;padding-top: 1rem;padding-bottom: 2rem;">
+                    <label for="flightdate" class="form-label">出生日期<span style="color:red">(必填)</span></label>
+                    <div class="input-group" id="birthdate">
+                        <input type="text" class="form-control" placeholder="請輸入" id="birthdate" name="datePicker">
+                        <div class="input-group-append">
+                            <span class="input-group-text fs-xl">
+                                <i class="fal fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" style="padding-right: 0.5rem;">清空搜尋條件</a>
+                    <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnUseSubmit" onclick="process()" style="background-color:#23A6F0">Search</button>
+                </div>
+                <div class="col-xs-2">
+                    <button type="button" class="btn btn-info" name="btnUseSubmit" id="btnExport" onclick="" style="background-color:#23A6F0">匯出檔案</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="HumanTrafficker_List"></div>
+
+<div id="HighFreqQuery_View"></div>
+
+<script>
+    $(document).ready(function () {
+        var controls = {
+            leftArrow: '<i class="fal fa-angle-left" style="font-size: 1.25rem"></i>',
+            rightArrow: '<i class="fal fa-angle-right" style="font-size: 1.25rem"></i>'
+        }
+        $('input[name=datePicker]').datepicker({
+            orientation: "bottom right",
+            todayHighlight: true,
+            templates: controls,
+            format: "yyyy/mm/dd"
+        });
+    });
+    function process() {
+        var nation = $('[name=nation]').val();
+        var inTimes = $('[name=inTimes]').val();
+        var flightdate = $('#flightdatePicker').val();
+        LoadTable('HumanTrafficker_List', 'PNRAnalysis/ListHumanTrafficker?nation=' + nation + '&inTimes=' + inTimes + '&flightdate=' + flightdate);
+    }
+    function goback() {
+        $('#HumanTrafficker_List').show();
+        $('#ListHumanTraffickerDt').show();
+        $('#HumanTraffickermain').show();
+        $('#btnNewBatch').show();
+        $('#HumanTrafficker_View').hide();
+        $('#btnGoBack').hide();
+    }
+    function process_add() {
+        $.ajax({
+            url: "/PNRAnalysis/HumanTrafficker_Add",
+            data: {},
+            type: "post",
+            success: function (res) {
+                alert('新增任務成功');
+            }
+        });
+    }
+</script>

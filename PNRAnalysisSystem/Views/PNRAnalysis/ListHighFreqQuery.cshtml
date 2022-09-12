@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+@model List<PNRModel.HighFreqQueryModel>
+
+<style>
+    table thead th {
+        color: white;
+    }
+</style>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <table id="ListHighFreqQueryDt" class="display" style="width:100%">
+            <thead>
+                <tr style="background-color: #23A6F0;">
+                    <th>比對結果</th>
+                    <th>國籍</th>
+                    <th>入境次數</th>
+                    <th>航班日期期間</th>
+                    <th>狀態</th>
+                    <th>動作</th>
+                </tr>
+            </thead>
+              <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td><span @(item.comparisonStatus=="比中"?"style=color:red":"")>@item.comparisonStatus</span></td>
+                <td>@item.nation</td>
+                <td>@item.numberOfEntries</td>
+                <td>@item.startedDate 至 @item.endedDate</td>
+                <td>@item.status</td>
+            <td>
+                <button class="btn btn-success btn-icon-split" style="background-color:#75A05E" onclick="LoadView('@item.taskId')">
+                    <span class="text">詳細</span>
+                </button>
+                <button class="btn btn-success btn-icon-split" style="background-color:#646464" onclick="processDel('@item.taskId')">
+                    <span class="text">刪除</span>
+                </button>
+            </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#ListHighFreqQueryDt').DataTable({
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": false,
+            fixedHeader: {
+                header: true,
+                footer: true
+            }
+        });
+    });
+    function LoadView(taskid) {
+        $('#HighFreqQuery_List').hide();
+        $('#ListHighFreqQueryDt').hide();
+        $('#highfreqquerymain').hide();
+        $('#btnNewBatch').hide();
+
+        $.ajax({
+            url: "/PNRAnalysis/HighFreqQuery_View",
+            data: { taskid: taskid },
+            type: "post",
+            success: function (html) {
+                $('#HighFreqQuery_View').html(html);
+            }
+        });
+        $('#HighFreqQuery_View').show();
+        $('#HighFreqQuery_ViewDt').show();
+        $('#btnGoBack').show();
+    }
+
+    function processDel(taskid) {
+        $.ajax({
+            url: "/PNRAnalysis/HighFreqQuery_Del",
+            data: { taskid: taskid },
+            type: "post",
+            success: function (res) {
+                process();
+            }
+        });
+    }
+</script>
